@@ -37,13 +37,13 @@ class FrenteCartao extends StatelessWidget {
             ),
             Positioned(
               child: Text(
-                'LUIZ RODRIGUES',
+                'LUIZ E RODRIGUES',
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.white,
                 ),
               ),
-              right: 85,
+              right: 75,
               bottom: 56,
             ),
             Positioned(

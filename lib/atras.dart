@@ -11,20 +11,19 @@ class AtrasCartao extends StatelessWidget {
       aspectRatio: 8.56 / 5.4,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Color.fromRGBO(109, 33, 119, 1),
         ),
         width: double.infinity,
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Stack(
+          overflow: Overflow.clip,
           children: <Widget>[
-            Positioned(
-              top: 20,
-              child: Container(
-                height: 80,
-                color: Colors.white,
-                width: double.maxFinite,
-              ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              height: 80,
+              color: Colors.white,
+              width: double.maxFinite,
             ),
             Positioned(
               child: Image.asset(

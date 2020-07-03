@@ -17,7 +17,6 @@ class AtrasCartao extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Stack(
-          overflow: Overflow.clip,
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 20),

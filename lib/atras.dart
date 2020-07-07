@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class AtrasCartao extends StatefulWidget {
   const AtrasCartao({
@@ -11,10 +12,25 @@ class AtrasCartao extends StatefulWidget {
 }
 
 class _AtrasCartaoState extends State<AtrasCartao> {
+  var maskFormatter = new MaskTextInputFormatter(
+    mask: '#### #### #### ####',
+    filter: {
+      "#": RegExp(r'[0-9]'),
+    },
+  );
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the widget tree.
+    // This also removes the _printLatestValue listener.
+    _controller.dispose();
+    super.dispose();
+  }
+
+  var _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    /*  var _controller = TextEditingController();
-    var _novocontroller; */
+    //var _novocontroller;
 
     return AspectRatio(
       aspectRatio: 8.56 / 5.4,
@@ -41,20 +57,8 @@ class _AtrasCartaoState extends State<AtrasCartao> {
               right: 10,
               bottom: 10,
             ),
-            /*  Positioned(
-              child: Text(
-                '9999 9999 9999 9999',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),TextInputFormatter
-              left: 25,
-              bottom: 30,
-            ), */
             Positioned(
-              bottom: -5,
+              bottom: 15,
               child: Row(
                 children: <Widget>[
                   SizedBox(
@@ -66,7 +70,12 @@ class _AtrasCartaoState extends State<AtrasCartao> {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
-                        WhitelistingTextInputFormatter.digitsOnly,
+                        WhitelistingTextInputFormatter(
+                          RegExp(
+                            "[1-9' ']",
+                          ),
+                        ),
+                        maskFormatter,
                       ],
                       decoration: InputDecoration(
                         hintText: 'NÚMERO DO CARTÃO',
@@ -79,8 +88,7 @@ class _AtrasCartaoState extends State<AtrasCartao> {
                         color: Colors.white,
                         fontSize: 22,
                       ),
-                      maxLength: 16,
-                      // controller: _controller,
+                      controller: _controller,
                     ),
                   ),
                 ],
@@ -92,19 +100,3 @@ class _AtrasCartaoState extends State<AtrasCartao> {
     );
   }
 }
-
-/* String mask(TextEditingController controller) {
-  var mask = [controller.text];
-
-  if (mask.length >= 16) {
-    mask.insert(4, '');
-
-    mask.insert(9, '');
-
-    mask.insert(14, '');
-  }
-
-  controller.text = mask.toString();
-
-  return controller.text;
-} */

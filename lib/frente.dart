@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text?.toUpperCase(),
+      selection: newValue.selection,
+    );
+  }
+}
 
 class FrenteCartao extends StatelessWidget {
   const FrenteCartao({
@@ -17,6 +29,7 @@ class FrenteCartao extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Stack(
+          overflow: Overflow.clip,
           children: <Widget>[
             Positioned(
               child: Image.asset(
@@ -36,17 +49,6 @@ class FrenteCartao extends StatelessWidget {
               bottom: 10,
             ),
             Positioned(
-              child: Text(
-                'LUIZ E RODRIGUES',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                ),
-              ),
-              right: 75,
-              bottom: 56,
-            ),
-            Positioned(
               child: Image.asset(
                 'assets/chip.png',
                 height: 60,
@@ -62,6 +64,38 @@ class FrenteCartao extends StatelessWidget {
               ),
               left: 110,
               top: 90,
+            ),
+            Positioned(
+              bottom: 20,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 130,
+                  ),
+                  Container(
+                    color: Colors.transparent,
+                    width: double.maxFinite,
+                    child: TextField(
+                      inputFormatters: [
+                        UpperCaseTextFormatter(),
+                      ],
+                      decoration: InputDecoration(
+                        hintText: 'SEU NOME',
+                        hintStyle: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                      ),
+                      maxLength: 20,
+                      // onTap: () => ,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

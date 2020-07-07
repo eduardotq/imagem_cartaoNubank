@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AtrasCartao extends StatelessWidget {
   const AtrasCartao({
@@ -21,7 +22,7 @@ class AtrasCartao extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20),
               height: 80,
-              color: Colors.white,
+              color: Colors.grey[400],
               width: double.maxFinite,
             ),
             Positioned(
@@ -32,7 +33,7 @@ class AtrasCartao extends StatelessWidget {
               right: 10,
               bottom: 10,
             ),
-            Positioned(
+            /*  Positioned(
               child: Text(
                 '9999 9999 9999 9999',
                 style: TextStyle(
@@ -43,6 +44,38 @@ class AtrasCartao extends StatelessWidget {
               ),
               left: 25,
               bottom: 30,
+            ), */
+            Positioned(
+              bottom: -5,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 25,
+                  ),
+                  Container(
+                    color: Colors.transparent,
+                    width: double.maxFinite,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        WhitelistingTextInputFormatter.digitsOnly
+                      ],
+                      decoration: InputDecoration(
+                        hintText: 'NÚMERO DO CARTÃO',
+                        hintStyle: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                      ),
+                      maxLength: 19,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

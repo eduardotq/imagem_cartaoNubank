@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AtrasCartao extends StatelessWidget {
+class AtrasCartao extends StatefulWidget {
   const AtrasCartao({
     Key key,
   }) : super(key: key);
 
   @override
+  _AtrasCartaoState createState() => _AtrasCartaoState();
+}
+
+class _AtrasCartaoState extends State<AtrasCartao> {
+  @override
   Widget build(BuildContext context) {
+    /*  var _controller = TextEditingController();
+    var _novocontroller; */
+
     return AspectRatio(
       aspectRatio: 8.56 / 5.4,
       child: Container(
@@ -41,7 +49,7 @@ class AtrasCartao extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
+              ),TextInputFormatter
               left: 25,
               bottom: 30,
             ), */
@@ -58,7 +66,7 @@ class AtrasCartao extends StatelessWidget {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
-                        WhitelistingTextInputFormatter.digitsOnly
+                        WhitelistingTextInputFormatter.digitsOnly,
                       ],
                       decoration: InputDecoration(
                         hintText: 'NÚMERO DO CARTÃO',
@@ -71,7 +79,8 @@ class AtrasCartao extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 22,
                       ),
-                      maxLength: 19,
+                      maxLength: 16,
+                      // controller: _controller,
                     ),
                   ),
                 ],
@@ -83,3 +92,19 @@ class AtrasCartao extends StatelessWidget {
     );
   }
 }
+
+/* String mask(TextEditingController controller) {
+  var mask = [controller.text];
+
+  if (mask.length >= 16) {
+    mask.insert(4, '');
+
+    mask.insert(9, '');
+
+    mask.insert(14, '');
+  }
+
+  controller.text = mask.toString();
+
+  return controller.text;
+} */

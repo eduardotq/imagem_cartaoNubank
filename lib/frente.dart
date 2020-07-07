@@ -12,11 +12,16 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   }
 }
 
-class FrenteCartao extends StatelessWidget {
+class FrenteCartao extends StatefulWidget {
   const FrenteCartao({
     Key key,
   }) : super(key: key);
 
+  @override
+  _FrenteCartaoState createState() => _FrenteCartaoState();
+}
+
+class _FrenteCartaoState extends State<FrenteCartao> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -91,7 +96,6 @@ class FrenteCartao extends StatelessWidget {
                         fontSize: 22,
                       ),
                       maxLength: 20,
-                      // onTap: () => ,
                     ),
                   ),
                 ],

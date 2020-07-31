@@ -1,4 +1,4 @@
-import 'package:clone_cartao_nubank/atras.dart';
+import 'package:clone_cartao_nubank/verso.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
